@@ -8,7 +8,11 @@ import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
 export class ShiftsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private shiftUpdatesGateway: ShiftUpdatesGateway, 
+
+  ) {}
 
   async createShift(businessId: number, shiftData: CreateShiftDto) {
     const business = await this.prisma.business.findUnique({
@@ -45,7 +49,10 @@ export class ShiftsService {
         startTime: shiftData.startTime,
         endTime: shiftData.endTime,
       },
+
     });
+    this.shiftUpdatesGateway.sendShiftNotification(assignee.userId, 'You have been assigned a new shift');
+    
     return {
       message: "Shift created successfully",
       status: "success",
