@@ -10,8 +10,6 @@ import { PrismaService } from "src/prisma/prisma.service";
 export class ShiftsService {
   constructor(
     private prisma: PrismaService,
-    private shiftUpdatesGateway: ShiftUpdatesGateway, 
-
   ) {}
 
   async createShift(businessId: number, shiftData: CreateShiftDto) {
@@ -51,7 +49,6 @@ export class ShiftsService {
       },
 
     });
-    this.shiftUpdatesGateway.sendShiftNotification(assignee.userId, 'You have been assigned a new shift');
     
     return {
       message: "Shift created successfully",
