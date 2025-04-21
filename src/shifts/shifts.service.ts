@@ -5,11 +5,13 @@ import {
 } from "@nestjs/common";
 import { CreateShiftDto } from "./dto/create-shift.dto";
 import { PrismaService } from "src/prisma/prisma.service";
+import { ShiftGateway } from "./shifts.gateway";
 
 @Injectable()
 export class ShiftsService {
   constructor(
     private prisma: PrismaService,
+    private shiftGateway: ShiftGateway,
   ) {}
 
   async createShift(businessId: number, shiftData: CreateShiftDto) {
@@ -49,7 +51,7 @@ export class ShiftsService {
       },
 
     });
-    
+    this.shiftGateway.broadcastShiftUpdate(assignee.userId, {"New shift created"});
     return {
       message: "Shift created successfully",
       status: "success",

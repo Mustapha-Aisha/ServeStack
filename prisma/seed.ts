@@ -509,7 +509,6 @@ async function main() {
   await prisma.menuOptions.create({data:{menuId:3, optionId:3}});
   await prisma.outlet.createMany({data:outlets});
   await prisma.table.createMany({data:tables});
-  await prisma.table.
 }
 
 main()

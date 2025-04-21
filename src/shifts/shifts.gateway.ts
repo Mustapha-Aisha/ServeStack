@@ -10,7 +10,7 @@ import {
 import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway()
-export class ShiftUpdatesGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class ShiftGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
 
@@ -46,7 +46,7 @@ export class ShiftUpdatesGateway implements OnGatewayConnection, OnGatewayDiscon
       console.log(`Client ${client.id} unsubscribed from updates for user ${userId}`);
     }
   }
-/* iiiii */
+
   broadcastShiftUpdate(userId: number, update: any) {
     const clients = this.subscriptions.get(userId);
     if (clients) {

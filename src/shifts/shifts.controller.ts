@@ -45,7 +45,8 @@ export class ShiftsController {
     @Body() createShiftDto: CreateShiftDto,
     @Req() request: Record<string, any>,
   ) {
-    const { business_id } = request.headers;
+    const { business_id} = request.headers;
+
     return this.shiftsService.createShift(+business_id, createShiftDto);
   }
 
