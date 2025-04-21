@@ -1,7 +1,7 @@
-# Chopmoni NestJS API
+# ServerStack NestJS API
 
 ## Description
-Chopmoni is a full suite service platform that provide vendors with a holistic platform for order management, delivery and payment. Target businesses are currently restaurants.
+ServerStack is a full suite service platform that provide vendors with a holistic platform for order management, delivery and payment. Target businesses are currently restaurants.
 
 ## Dependencies Installation
 
